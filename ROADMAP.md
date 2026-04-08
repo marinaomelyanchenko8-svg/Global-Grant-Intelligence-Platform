@@ -23,8 +23,8 @@ This roadmap enables the team of 3 to work in parallel with minimal dependencies
 |------|-------|--------|--------|
 | Create project structure | Marina | `marina/project-structure` | Root directories, MASTER-PROMPT.md, README.md, .gitignore |
 | Initialize repository | Marina | `marina/project-structure` | Working Git setup with `main` protected |
-| Create backend scaffolding | Arvin | `arvin/backend-scaffold` | `backend/` directory with FastAPI skeleton, requirements.txt |
-| Create frontend scaffolding | Nazar | `nazar/frontend-scaffold` | `frontend/` directory with HTML/CSS/JS structure |
+| Create backend scaffolding | Arvin | `arvin/backend-mvp` | `backend/` directory with FastAPI skeleton, requirements.txt |
+| Create frontend scaffolding | Nazar | `nazar/frontend-mvp` | `frontend/` directory with HTML/CSS/JS structure |
 
 **Dependencies:**
 - Marina's structure task must complete first
@@ -43,31 +43,31 @@ This roadmap enables the team of 3 to work in parallel with minimal dependencies
 
 | Task | Owner | Branch | Output |
 |------|-------|--------|--------|
-| Define data models | Arvin | `arvin/data-models` | Pydantic models matching shared data structure |
-| Create mock data (10 grants) | Arvin | `arvin/mock-data` | `backend/data/grants.json` with complete sample data |
-| Implement GET /grants endpoint | Arvin | `arvin/api-endpoints` | Working API returning structured JSON |
-| Add CORS middleware | Arvin | `arvin/api-endpoints` | Frontend can call API from different port |
-| API documentation | Arvin | `arvin/api-endpoints` | Auto-generated docs at `/docs` |
+| Define data models | Arvin | `arvin/backend-mvp` | Pydantic models matching shared data structure |
+| Create mock data (10 grants) | Arvin | `arvin/backend-mvp` | `backend/data/grants.json` with complete sample data |
+| Implement GET /grants endpoint | Arvin | `arvin/backend-mvp` | Working API returning structured JSON |
+| Add CORS middleware | Arvin | `arvin/backend-mvp` | Frontend can call API from different port |
+| API documentation | Arvin | `arvin/backend-mvp` | Auto-generated docs at `/docs` |
 
 ### Frontend Track (Nazar)
 
 | Task | Owner | Branch | Output |
 |------|-------|--------|--------|
-| Create grant card component | Nazar | `nazar/ui-components` | HTML/CSS card showing title, funding, score, explanation |
-| Implement grant list view | Nazar | `nazar/ui-components` | Container for multiple grant cards |
-| Add API client | Nazar | `nazar/api-integration` | JavaScript fetch to `localhost:8000/grants` |
-| Add score color coding | Nazar | `nazar/ui-polish` | Green (70+), yellow (40-69), red (<40) |
-| Loading and error states | Nazar | `nazar/ui-polish` | User feedback for async operations |
+| Create grant card component | Nazar | `nazar/frontend-mvp` | HTML/CSS card showing title, funding, score, explanation |
+| Implement grant list view | Nazar | `nazar/frontend-mvp` | Container for multiple grant cards |
+| Add API client | Nazar | `nazar/frontend-mvp` | JavaScript fetch to `localhost:8000/grants` |
+| Add score color coding | Nazar | `nazar/frontend-mvp` | Green (70+), yellow (40-69), red (<40) |
+| Loading and error states | Nazar | `nazar/frontend-mvp` | User feedback for async operations |
 
 ### Intelligence Track (Marina)
 
 | Task | Owner | Branch | Output |
 |------|-------|--------|--------|
-| Create topic detection module | Marina | `marina/intelligence` | Keyword-based topic extraction |
-| Implement trend classifier | Marina | `marina/intelligence` | Logic for Emerging/Growing/Stable/Declining |
-| Build scoring engine | Marina | `marina/intelligence` | Rule-based 0-100 scoring |
-| Add explanation generator | Marina | `marina/intelligence` | Template-based rationale generation |
-| Integration hook | Marina | `marina/intelligence` | Function to enrich raw grant data |
+| Create topic detection module | Marina | `marina/intelligence-and-coordination` | Keyword-based topic extraction |
+| Implement trend classifier | Marina | `marina/intelligence-and-coordination` | Logic for Emerging/Growing/Stable/Declining |
+| Build scoring engine | Marina | `marina/intelligence-and-coordination` | Rule-based 0-100 scoring |
+| Add explanation generator | Marina | `marina/intelligence-and-coordination` | Template-based rationale generation |
+| Integration hook | Marina | `marina/intelligence-and-coordination` | Function to enrich raw grant data |
 
 **Dependencies:**
 - Arvin and Nazar work independently after scaffolding
@@ -85,10 +85,10 @@ This roadmap enables the team of 3 to work in parallel with minimal dependencies
 
 | Task | Owner | Branch | Output |
 |------|-------|--------|--------|
-| Integrate intelligence into backend | Arvin | `arvin/integration` | Backend calls intelligence module before returning grants |
-| Test end-to-end flow | Marina | `marina/testing` | Verify frontend → backend → intelligence → frontend works |
+| Integrate intelligence into backend | Arvin | `arvin/backend-mvp` | Backend calls intelligence module before returning grants |
+| Test end-to-end flow | Marina | `marina/intelligence-and-coordination` | Verify frontend → backend → intelligence → frontend works |
 | Fix integration issues | All | Individual branches | Resolve any cross-component bugs |
-| Verify data contracts | Marina | `marina/testing` | Confirm all fields match shared structure |
+| Verify data contracts | Marina | `marina/intelligence-and-coordination` | Confirm all fields match shared structure |
 
 **Dependencies:**
 - Requires completion of Phase 2 core tasks
@@ -105,12 +105,12 @@ This roadmap enables the team of 3 to work in parallel with minimal dependencies
 
 | Task | Owner | Branch | Output |
 |------|-------|--------|--------|
-| Final UI refinements | Nazar | `nazar/final-polish` | Consistent styling, spacing, mobile-friendly |
-| Backend documentation | Arvin | `arvin/docs` | Setup instructions, API usage in `backend/README.md` |
-| Frontend documentation | Nazar | `nazar/docs` | Setup and run instructions in `frontend/README.md` |
-| Architecture documentation | Marina | `marina/docs` | System overview in `docs/architecture.md` |
-| Create TASKS files | Marina | `marina/project-management` | `TASKS-arvin.md`, `TASKS-nazar.md`, `TASKS-marina.md` |
-| Create WORKFLOW.md | Marina | `marina/project-management` | Branch and commit protocols |
+| Final UI refinements | Nazar | `nazar/frontend-mvp` | Consistent styling, spacing, mobile-friendly |
+| Backend documentation | Arvin | `arvin/backend-mvp` | Setup instructions, API usage in `backend/README.md` |
+| Frontend documentation | Nazar | `nazar/frontend-mvp` | Setup and run instructions in `frontend/README.md` |
+| Architecture documentation | Marina | `marina/intelligence-and-coordination` | System overview in `docs/architecture.md` |
+| Create TASKS files | Marina | `marina/intelligence-and-coordination` | `TASKS-arvin.md`, `TASKS-nazar.md`, `TASKS-marina.md` |
+| Create WORKFLOW.md | Marina | `marina/intelligence-and-coordination` | Branch and commit protocols |
 
 **Dependencies:**
 - Integration testing complete
