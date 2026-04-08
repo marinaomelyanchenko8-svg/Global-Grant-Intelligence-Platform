@@ -274,9 +274,9 @@ Success criteria:
 | Frontend MVP | Nazar | Web interface displaying grant cards |
 | Intelligence MVP | Marina | Rule-based analysis module |
 | Shared Project Structure | Marina | Root organization, data contracts |
-| ROADMAP.md | (Future) | Task sequencing with parallel work support |
-| Task Files | (Future) | Per-member task breakdowns |
-| WORKFLOW.md | (Future) | Branch and commit protocols |
+| ROADMAP.md | Marina | Task sequencing with parallel work support |
+| Task Files | Marina | Per-member task breakdowns |
+| WORKFLOW.md | Marina | Branch and commit protocols |
 
 ---
 

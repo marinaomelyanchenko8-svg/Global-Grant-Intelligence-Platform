@@ -177,15 +177,15 @@ curl http://localhost:8000/grants
 
 ## MVP Success Criteria
 
-- [x] Backend returns 10+ grants via `GET /grants`
-- [x] Each grant has all 16 required fields
-- [x] Intelligence fields populated (topics, score, trend, explanation)
-- [x] Frontend displays grants in clean card format
-- [x] Score is color-coded (green/yellow/red)
-- [x] Explanation text visible per grant
-- [x] Complete documentation created
-- [x] All team contributions merged to `main`
-- [x] Release tagged `v0.1-mvp`
+- [ ] Backend returns 10+ grants via `GET /grants`
+- [ ] Each grant has all 16 required fields
+- [ ] Intelligence fields populated (topics, score, trend, explanation)
+- [ ] Frontend displays grants in clean card format
+- [ ] Score is color-coded (green/yellow/red)
+- [ ] Explanation text visible per grant
+- [ ] Complete documentation created
+- [ ] All team contributions merged to `main`
+- [ ] Release tagged `v0.1-mvp`
 
 ---
 
@@ -208,5 +208,5 @@ MIT License — See [LICENSE](./LICENSE) (if applicable)
 
 *Project: Global Grant Intelligence Platform*  
 *Version: 0.1-MVP*  
-*Status: Development Complete*
+*Status: Development In Progress*
 
