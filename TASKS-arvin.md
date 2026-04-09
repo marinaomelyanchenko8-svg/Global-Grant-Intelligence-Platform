@@ -24,17 +24,17 @@ git checkout -b arvin/backend-mvp
 Set up the backend directory structure and basic FastAPI application.
 
 ### Acceptance Criteria
-- [ ] Create `backend/` directory with subdirectories:
+- [x] Create `backend/` directory with subdirectories:
   - `app/` — application code
   - `data/` — mock data storage
   - `tests/` — test files
-- [ ] Create `main.py` with basic FastAPI app
-- [ ] Create `requirements.txt` with dependencies:
+- [x] Create `main.py` with basic FastAPI app
+- [x] Create `requirements.txt` with dependencies:
   - fastapi
   - uvicorn
   - pydantic
-- [ ] App runs with `uvicorn main:app --reload`
-- [ ] `/docs` endpoint shows auto-generated documentation
+- [x] App runs with `uvicorn main:app --reload`
+- [x] `/docs` endpoint shows auto-generated documentation
 
 ### Commit Message
 ```
@@ -52,8 +52,8 @@ git commit -m "Add backend scaffold with FastAPI structure"
 Create Pydantic models matching the shared data structure exactly.
 
 ### Acceptance Criteria
-- [ ] Create `app/models.py` with `Grant` model
-- [ ] Model includes all raw fields:
+- [x] Create `app/models.py` with `Grant` model
+- [x] Model includes all raw fields:
   - id (str)
   - title (str)
   - description (str)
@@ -65,14 +65,14 @@ Create Pydantic models matching the shared data structure exactly.
   - source_name (str)
   - source_url (str)
   - status (str with values: open, closed, draft)
-- [ ] Model includes all intelligence fields:
+- [x] Model includes all intelligence fields:
   - topics (list[str])
   - confidence (float)
   - trend_label (str)
   - score (int)
   - explanation (str)
-- [ ] Model validates status is one of: open, closed, draft
-- [ ] Model validates score is 0-100
+- [x] Model validates status is one of: open, closed, draft
+- [x] Model validates score is 0-100
 
 ### Commit Message
 ```
