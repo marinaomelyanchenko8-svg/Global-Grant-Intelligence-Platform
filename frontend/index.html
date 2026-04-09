@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Grant Intelligence Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Global Grant Intelligence Platform</h1>
+        <p class="header-description">Discover and track funding opportunities worldwide</p>
+    </header>
+
+    <main class="container">
+        <div id="loading" class="loading hidden">Loading grants...</div>
+        <div id="error" class="error hidden">
+            <p>Error loading grants</p>
+            <button id="retry-btn" class="retry-btn">Retry</button>
+        </div>
+        <div id="grants-container" class="grants-grid"></div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Global Grant Intelligence Platform</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
