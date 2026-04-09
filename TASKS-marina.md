@@ -614,7 +614,7 @@ git commit -m "Add MVP retrospective documentation"
 | Task | Effort | Status |
 |------|--------|--------|
 | 2.1 Intelligence Scaffold | Small | ✅ |
-| 2.2 Topic Detection | Medium | ⬜ |
+| 2.2 Topic Detection | Medium | ✅ |
 | 2.3 Trend Classification | Small | ⬜ |
 | 2.4 Scoring Engine | Medium | ⬜ |
 | 2.5 Explanation Generator | Small | ⬜ |
