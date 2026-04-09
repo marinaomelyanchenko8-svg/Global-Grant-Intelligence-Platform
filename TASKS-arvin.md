@@ -197,13 +197,13 @@ git commit -m "Configure CORS for frontend access"
 Document the backend setup and API for other team members.
 
 ### Acceptance Criteria
-- [ ] Create `backend/README.md` with sections:
+- [x] Create `backend/README.md` with sections:
   - Setup instructions (install, run)
   - API endpoint description
   - Data model overview
   - Testing commands
-- [ ] Include sample `curl` command for testing
-- [ ] Document port (8000) and auto-docs URL (`/docs`)
+- [x] Include sample `curl` command for testing
+- [x] Document port (8000) and auto-docs URL (`/docs`)
 
 ### Commit Message
 ```
@@ -245,7 +245,7 @@ git commit -m "Integrate intelligence module for dynamic grant enrichment"
 | 3. Mock Data | Medium | ✅ | Needs variety |
 | 4. GET /grants | Small | ✅ | Core endpoint |
 | 5. CORS Config | Small | ✅ | For frontend |
-| 6. Documentation | Small | ⬜ | Final polish |
+| 6. Documentation | Small | ✅ | Final polish |
 | 7. Integration | Medium | ⬜ | If time allows |
 
 ---
