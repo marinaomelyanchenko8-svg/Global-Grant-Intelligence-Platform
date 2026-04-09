@@ -240,8 +240,8 @@ git commit -m "Integrate intelligence module for dynamic grant enrichment"
 
 | Task | Effort | Status | Notes |
 |------|--------|--------|-------|
-| 1. Project Scaffold | Small | ⬜ | Do first |
-| 2. Data Models | Small | ⬜ | After scaffold |
+| 1. Project Scaffold | Small | ✅ | Do first |
+| 2. Data Models | Small | ✅ | After scaffold |
 | 3. Mock Data | Medium | ⬜ | Needs variety |
 | 4. GET /grants | Small | ⬜ | Core endpoint |
 | 5. CORS Config | Small | ⬜ | For frontend |
