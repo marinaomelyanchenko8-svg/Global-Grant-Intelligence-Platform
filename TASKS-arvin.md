@@ -266,8 +266,11 @@ git commit -m "Integrate intelligence module for dynamic grant enrichment"
    git add .
    git commit -m "descriptive message"
    
-   # 2. Update this tasks file (mark task as complete ✅)
-   # Edit TASKS-arvin.md and change ⬜ to ✅ for completed task
+   # 2. Update this tasks file - mark ALL completion indicators:
+   #    a) Task Summary table: change ⬜ to ✅
+   #    b) Acceptance Criteria: change [ ] to [x] for each completed item
+   #    c) Task-level status box if present
+   # Edit TASKS-arvin.md and update ALL completion markers
    
    # 3. Commit the tasks file update
    git add TASKS-arvin.md
