@@ -258,10 +258,20 @@ git commit -m "Add frontend README with setup documentation"
    git rebase main
    ```
 
-2. **During work:** Commit after completing each task
+2. **During work (after completing each task):**
    ```bash
+   # 1. Commit the task code
    git add .
    git commit -m "descriptive message"
+   
+   # 2. Update this tasks file (mark task as complete ✅)
+   # Edit TASKS-nazar.md and change ⬜ to ✅ for completed task
+   
+   # 3. Commit the tasks file update
+   git add TASKS-nazar.md
+   git commit -m "docs: update TASKS-nazar.md - mark completed tasks"
+   
+   # 4. Push everything
    git push origin nazar/frontend-mvp
    ```
 

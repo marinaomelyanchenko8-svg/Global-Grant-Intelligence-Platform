@@ -656,10 +656,20 @@ git commit -m "Add MVP retrospective documentation"
    git rebase main
    ```
 
-2. **During work:**
+2. **During work (after completing each task):**
    ```bash
+   # 1. Commit the task code
    git add .
    git commit -m "descriptive message"
+   
+   # 2. Update this tasks file (mark task as complete ✅)
+   # Edit TASKS-marina.md and change ⬜ to ✅ for completed task
+   
+   # 3. Commit the tasks file update
+   git add TASKS-marina.md
+   git commit -m "docs: update TASKS-marina.md - mark completed tasks"
+   
+   # 4. Push everything
    git push origin marina/intelligence-and-coordination
    ```
 

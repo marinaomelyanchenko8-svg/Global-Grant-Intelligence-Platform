@@ -38,7 +38,61 @@ git checkout -b arvin/backend-mvp
 
 ---
 
-## 2. Daily Workflow
+## 2. Day 1: Project Kickoff (Marina Creates Structure)
+
+**IMPORTANT:** This section applies only to Day 1. Marina must complete this before Arvin and Nazar begin work.
+
+### Step 1: Marina Creates and Merges Structure
+
+Marina creates the project foundation and merges it to `main` first:
+
+```bash
+# Create structure branch
+git checkout -b marina/project-structure
+
+# ... create all initial files (directories, docs, workflow) ...
+
+# Commit and push
+git add .
+git commit -m "Initial project structure and documentation"
+git push origin marina/project-structure
+
+# Merge to main
+git checkout main
+git merge marina/project-structure
+git push origin main
+```
+
+**Only after this is complete** should Arvin and Nazar proceed to Step 2.
+
+### Step 2: Arvin and Nazar Create Branches FROM main
+
+Arvin and Nazar must create their branches **after** Marina's structure is in `main`:
+
+```bash
+# Arvin's commands
+git checkout main
+git pull origin main                    # Get Marina's structure
+git checkout -b arvin/backend-mvp       # Create from updated main
+git push -u origin arvin/backend-mvp
+
+# Nazar's commands  
+git checkout main
+git pull origin main                    # Get Marina's structure
+git checkout -b nazar/frontend-mvp      # Create from updated main
+git push -u origin nazar/frontend-mvp
+```
+
+### Why This Order Matters
+
+- Arvin and Nazar need the directory structure Marina creates
+- They need `MASTER-PROMPT.md` for the data structure
+- They need `WORKFLOW.md` for Git protocols
+- Creating branches before Marina merges means they'll be missing dependencies
+
+---
+
+## 4. Daily Workflow
 
 ### Start of Day (Every Day)
 
@@ -88,7 +142,7 @@ git log --oneline --graph --all
 
 ---
 
-## 3. Commit Standards
+## 5. Commit Standards
 
 ### When to Commit
 - **After completing each discrete task**
@@ -142,7 +196,7 @@ git commit -m "feat: add opportunity scoring engine" -m "- Base score of 50 poin
 
 ---
 
-## 4. Regular Pushes
+## 6. Regular Pushes
 
 ### Push Frequency
 - **At least once per day**
@@ -170,7 +224,7 @@ git push --force-with-lease origin <your-branch-name>
 
 ---
 
-## 5. No Work in Main Branch
+## 7. No Work in Main Branch
 
 ### This Rule is Absolute
 
@@ -216,7 +270,7 @@ git push --force origin main
 
 ---
 
-## 6. Marina Coordinates Final Merge
+## 8. Marina Coordinates Final Merge
 
 ### Merge Process
 
@@ -280,7 +334,7 @@ tag v0.1-mvp
 
 ---
 
-## 7. Conflict Resolution
+## 9. Conflict Resolution
 
 ### When Conflicts Happen
 
@@ -337,7 +391,7 @@ Automatic merge failed; fix conflicts and commit the result.
 
 ---
 
-## 8. Communication Guidelines
+## 10. Communication Guidelines
 
 ### Daily Check-in (Text/Slack/Discord)
 
@@ -368,7 +422,7 @@ errors correctly before I move on.
 
 ---
 
-## 9. Quick Reference
+## 11. Quick Reference
 
 ### Essential Commands
 
@@ -430,7 +484,7 @@ admin/          → Project management (Marina)
 
 ---
 
-## 10. Rules Summary
+## 12. Rules Summary
 
 ### The Golden Rules
 
