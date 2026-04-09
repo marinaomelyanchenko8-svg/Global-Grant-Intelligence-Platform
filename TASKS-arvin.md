@@ -136,12 +136,12 @@ git commit -m "Add mock data with 10 sample grants"
 Implement the main API endpoint that returns all grants.
 
 ### Acceptance Criteria
-- [ ] Create `GET /grants` endpoint in `main.py`
-- [ ] Endpoint returns list of Grant objects as JSON
-- [ ] Response includes all intelligence fields populated
-- [ ] Data loads from `data/grants.json`
-- [ ] Response status is 200 OK
-- [ ] Content-Type is `application/json`
+- [x] Create `GET /grants` endpoint in `main.py`
+- [x] Endpoint returns list of Grant objects as JSON
+- [x] Response includes all intelligence fields populated
+- [x] Data loads from `data/grants.json`
+- [x] Response status is 200 OK
+- [x] Content-Type is `application/json`
 
 ### Test Command
 ```bash
@@ -175,11 +175,11 @@ git commit -m "Add GET /grants endpoint returning enriched grant data"
 Enable Cross-Origin Resource Sharing so the frontend can call the API.
 
 ### Acceptance Criteria
-- [ ] Add CORS middleware to FastAPI app
-- [ ] Allow origins: `http://localhost:3000`, `http://localhost:5173`
-- [ ] Allow methods: GET, POST, OPTIONS
-- [ ] Allow headers: Content-Type, Authorization
-- [ ] Frontend running on different port can successfully call `/grants`
+- [x] Add CORS middleware to FastAPI app
+- [x] Allow origins: `http://localhost:3000`, `http://localhost:5173`
+- [x] Allow methods: GET, POST, OPTIONS
+- [x] Allow headers: Content-Type, Authorization
+- [x] Frontend running on different port can successfully call `/grants`
 
 ### Commit Message
 ```
@@ -243,8 +243,8 @@ git commit -m "Integrate intelligence module for dynamic grant enrichment"
 | 1. Project Scaffold | Small | ✅ | Do first |
 | 2. Data Models | Small | ✅ | After scaffold |
 | 3. Mock Data | Medium | ✅ | Needs variety |
-| 4. GET /grants | Small | ⬜ | Core endpoint |
-| 5. CORS Config | Small | ⬜ | For frontend |
+| 4. GET /grants | Small | ✅ | Core endpoint |
+| 5. CORS Config | Small | ✅ | For frontend |
 | 6. Documentation | Small | ⬜ | Final polish |
 | 7. Integration | Medium | ⬜ | If time allows |
 
