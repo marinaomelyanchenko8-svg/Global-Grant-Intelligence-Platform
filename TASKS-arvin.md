@@ -90,13 +90,13 @@ git commit -m "Add Pydantic Grant model with all required fields"
 Create 10 sample grants with realistic data for development and testing.
 
 ### Acceptance Criteria
-- [ ] Create `data/grants.json` with 10 grant objects
-- [ ] Each grant has all required fields (raw + intelligence)
-- [ ] Variety of topics represented: AI, Climate, Healthcare, Education, etc.
-- [ ] Different funding amounts: small (<$10K), medium ($50-100K), large (>$100K)
-- [ ] Mix of trend labels: Emerging, Growing, Stable, Declining
-- [ ] Scores distributed across ranges: high (70+), medium (40-69), low (<40)
-- [ ] Data loads without errors in Python
+- [x] Create `data/grants.json` with 10 grant objects
+- [x] Each grant has all required fields (raw + intelligence)
+- [x] Variety of topics represented: AI, Climate, Healthcare, Education, etc.
+- [x] Different funding amounts: small (<$10K), medium ($50-100K), large (>$100K)
+- [x] Mix of trend labels: Emerging, Growing, Stable, Declining
+- [x] Scores distributed across ranges: high (70+), medium (40-69), low (<40)
+- [x] Data loads without errors in Python
 
 ### Sample Data Format
 ```json
@@ -242,7 +242,7 @@ git commit -m "Integrate intelligence module for dynamic grant enrichment"
 |------|--------|--------|-------|
 | 1. Project Scaffold | Small | ✅ | Do first |
 | 2. Data Models | Small | ✅ | After scaffold |
-| 3. Mock Data | Medium | ⬜ | Needs variety |
+| 3. Mock Data | Medium | ✅ | Needs variety |
 | 4. GET /grants | Small | ⬜ | Core endpoint |
 | 5. CORS Config | Small | ⬜ | For frontend |
 | 6. Documentation | Small | ⬜ | Final polish |

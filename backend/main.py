@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
+import json
+import os
 from app.models import Grant
 
 app = FastAPI(
@@ -26,12 +28,18 @@ async def health_check():
     return {"status": "healthy"}
 
 
+def load_grants() -> List[Grant]:
+    """Load grants from JSON file."""
+    data_path = os.path.join(os.path.dirname(__file__), "data", "grants.json")
+    with open(data_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return [Grant(**grant) for grant in data]
+
+
 @app.get("/grants", response_model=List[Grant])
 async def get_grants():
     """
     Return all grants with intelligence fields.
-    Data loaded from mock data (Task 3).
+    Data loaded from data/grants.json.
     """
-    # TODO: Load from data/grants.json in Task 3
-    # For now, return empty list to verify endpoint structure
-    return []
+    return load_grants()
