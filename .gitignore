@@ -16,3 +16,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+# WhoAmI files
+WHOAMI-*.md
+.whoami
+WHOAMI.md
