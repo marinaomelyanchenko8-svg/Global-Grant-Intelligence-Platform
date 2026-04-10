@@ -148,13 +148,13 @@ git commit -m "Add API client for fetching grants"
 Connect the API client to render grants dynamically in the list container.
 
 ### Acceptance Criteria
-- [ ] On page load, call `fetchGrants()`
-- [ ] Create DOM elements for each grant returned
-- [ ] Apply Task 2 card styling to rendered cards
-- [ ] Cards display in the Task 3 container
-- [ ] Page shows "Loading..." while fetching
-- [ ] Page shows "No grants available" if empty array returned
-- [ ] Page shows "Error loading grants" if request fails
+- [x] On page load, call `fetchGrants()`
+- [x] Create DOM elements for each grant returned
+- [x] Apply Task 2 card styling to rendered cards
+- [x] Cards display in the Task 3 container
+- [x] Page shows "Loading..." while fetching
+- [x] Page shows "No grants available" if empty array returned
+- [x] Page shows "Error loading grants" if request fails
 
 ### Commit Message
 ```
@@ -241,7 +241,7 @@ git commit -m "Add frontend README with setup documentation"
 | 2. Grant Card | Small | ✅ | Core component |
 | 3. List Container | Small | ✅ | Layout structure |
 | 4. API Client | Medium | ✅ | Needs backend CORS |
-| 5. Dynamic Rendering | Medium | ⬜ | Connect API to UI |
+| 5. Dynamic Rendering | Medium | ✅ | Connect API to UI |
 | 6. Loading/Error | Small | ⬜ | UX improvement |
 | 7. UI Polish | Medium | ⬜ | Final styling |
 | 8. Documentation | Small | ⬜ | Final step |
