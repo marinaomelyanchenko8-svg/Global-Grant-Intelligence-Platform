@@ -163,32 +163,10 @@ git commit -m "Add dynamic grant rendering from API"
 
 ---
 
-## Task 6: Loading and Error States
-
-**Estimated Effort:** Small  
-**Dependencies:** Task 5 complete
-
-### Description
-Add visual feedback for loading and error states.
-
-### Acceptance Criteria
-- [x] Show spinner or "Loading grants..." text while fetching
-- [x] Hide loading indicator when data loaded
-- [x] Show error message if API call fails
-- [x] Error message includes retry button (calls fetchGrants again)
-- [x] Loading/error states have consistent styling
-
-### Commit Message
-```
-git commit -m "Add loading and error state handling"
-```
-
----
-
-## Task 7: UI Polish
+## Task 6: UI Polish
 
 **Estimated Effort:** Medium  
-**Dependencies:** Task 6 complete
+**Dependencies:** Task 5 complete
 
 ### Description
 Refine the visual design for a professional appearance.
@@ -209,7 +187,7 @@ git commit -m "Polish UI styling and responsive design"
 
 ---
 
-## Task 8: Frontend Documentation
+## Task 7: Frontend Documentation
 
 **Estimated Effort:** Small  
 **Dependencies:** All above tasks complete
@@ -242,9 +220,8 @@ git commit -m "Add frontend README with setup documentation"
 | 3. List Container | Small | ✅ | Layout structure |
 | 4. API Client | Medium | ✅ | Needs backend CORS |
 | 5. Dynamic Rendering | Medium | ✅ | Connect API to UI |
-| 6. Loading/Error | Small | ✅ | UX improvement |
-| 7. UI Polish | Medium | ✅ | Final styling |
-| 8. Documentation | Small | ✅ | Final step |
+| 6. UI Polish | Medium | ✅ | Final styling |
+| 7. Documentation | Small | ✅ | Final step |
 
 ---
 
