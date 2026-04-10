@@ -24,14 +24,14 @@ git checkout -b nazar/frontend-mvp
 Set up the frontend directory structure and basic HTML/CSS/JS files.
 
 ### Acceptance Criteria
-- [ ] Create `frontend/` directory structure:
+- [x] Create `frontend/` directory structure:
   - `index.html` — main entry point
   - `css/styles.css` — styling
   - `js/app.js` — JavaScript logic
-- [ ] Basic HTML5 boilerplate in `index.html`
-- [ ] CSS file linked and loads correctly
-- [ ] JavaScript file linked and executes on page load
-- [ ] Page opens without errors in browser
+- [x] Basic HTML5 boilerplate in `index.html`
+- [x] CSS file linked and loads correctly
+- [x] JavaScript file linked and executes on page load
+- [x] Page opens without errors in browser
 
 ### Commit Message
 ```
@@ -88,12 +88,12 @@ git commit -m "Add grant card component with styling"
 Create a container that holds multiple grant cards in a grid or list layout.
 
 ### Acceptance Criteria
-- [ ] Create container div for multiple cards in `index.html`
-- [ ] Layout uses CSS Grid or Flexbox for card arrangement
-- [ ] Grid shows 3 cards per row on desktop, 2 on tablet, 1 on mobile
-- [ ] Cards have consistent spacing (gap of 16-24px)
-- [ ] Container has max-width and is centered on page
-- [ ] Page title "Global Grant Intelligence Platform" at top
+- [x] Create container div for multiple cards in `index.html`
+- [x] Layout uses CSS Grid or Flexbox for card arrangement
+- [x] Grid shows 3 cards per row on desktop, 2 on tablet, 1 on mobile
+- [x] Cards have consistent spacing (gap of 16-24px)
+- [x] Container has max-width and is centered on page
+- [x] Page title "Global Grant Intelligence Platform" at top
 
 ### Commit Message
 ```
@@ -172,11 +172,11 @@ git commit -m "Add dynamic grant rendering from API"
 Add visual feedback for loading and error states.
 
 ### Acceptance Criteria
-- [ ] Show spinner or "Loading grants..." text while fetching
-- [ ] Hide loading indicator when data loaded
-- [ ] Show error message if API call fails
-- [ ] Error message includes retry button (calls fetchGrants again)
-- [ ] Loading/error states have consistent styling
+- [x] Show spinner or "Loading grants..." text while fetching
+- [x] Hide loading indicator when data loaded
+- [x] Show error message if API call fails
+- [x] Error message includes retry button (calls fetchGrants again)
+- [x] Loading/error states have consistent styling
 
 ### Commit Message
 ```
@@ -194,13 +194,13 @@ git commit -m "Add loading and error state handling"
 Refine the visual design for a professional appearance.
 
 ### Acceptance Criteria
-- [ ] Consistent color scheme (suggest: blue primary, gray secondary)
-- [ ] Proper spacing and padding throughout
-- [ ] Readable font sizes (16px base, scale up for titles)
-- [ ] Hover effects on cards (slight shadow increase)
-- [ ] Header with project title and brief description
-- [ ] Footer with simple copyright/credits
-- [ ] Works in Chrome, Firefox, Safari
+- [x] Consistent color scheme (suggest: blue primary, gray secondary)
+- [x] Proper spacing and padding throughout
+- [x] Readable font sizes (16px base, scale up for titles)
+- [x] Hover effects on cards (slight shadow increase)
+- [x] Header with project title and brief description
+- [x] Footer with simple copyright/credits
+- [x] Works in Chrome, Firefox, Safari
 
 ### Commit Message
 ```
@@ -218,13 +218,13 @@ git commit -m "Polish UI styling and responsive design"
 Document the frontend setup for other team members.
 
 ### Acceptance Criteria
-- [ ] Create `frontend/README.md` with sections:
+- [x] Create `frontend/README.md` with sections:
   - Setup instructions (none needed for static files, or `npx serve`)
   - How to run (open `index.html` or use local server)
   - API endpoint it connects to
   - File structure overview
-- [ ] Document that backend must be running on port 8000
-- [ ] Include troubleshooting for CORS issues
+- [x] Document that backend must be running on port 8000
+- [x] Include troubleshooting for CORS issues
 
 ### Commit Message
 ```
@@ -242,9 +242,9 @@ git commit -m "Add frontend README with setup documentation"
 | 3. List Container | Small | ✅ | Layout structure |
 | 4. API Client | Medium | ✅ | Needs backend CORS |
 | 5. Dynamic Rendering | Medium | ✅ | Connect API to UI |
-| 6. Loading/Error | Small | ⬜ | UX improvement |
-| 7. UI Polish | Medium | ⬜ | Final styling |
-| 8. Documentation | Small | ⬜ | Final step |
+| 6. Loading/Error | Small | ✅ | UX improvement |
+| 7. UI Polish | Medium | ✅ | Final styling |
+| 8. Documentation | Small | ✅ | Final step |
 
 ---
 
