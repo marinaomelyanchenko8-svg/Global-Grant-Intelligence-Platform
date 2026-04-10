@@ -31,13 +31,49 @@ Backend must be running on port 8000 with CORS enabled.
 
 ```
 frontend/
-├── index.html      # Main entry point
+├── index.html      # Main entry point with multi-page structure
 ├── css/
-│   └── styles.css  # All styling
+│   └── styles.css  # All styling including modal & navigation
 ├── js/
-│   └── app.js      # API client & rendering logic
+│   └── app.js      # API client, routing & rendering logic
 └── assets/         # Static assets
 ```
+
+## Pages
+
+The frontend is a single-page application with multiple views:
+
+- **Dashboard** (`#dashboard`) - Overview with feature placeholders and recommended grants
+- **Grants** (`#grants`) - Full list of available grants
+- **Saved** (`#saved`) - Bookmarked opportunities (placeholder)
+
+Navigation updates URL hash and supports browser back/forward.
+
+## Features
+
+### Grant Cards
+- Title with bold formatting
+- Funding amount with currency indicator
+- Score with color coding (green/yellow/red)
+- Explanation text
+- Hover effects and responsive layout
+
+### Navigation
+- Header navigation with Dashboard, Grants, and Saved links
+- URL hash-based routing
+- Active state highlighting
+
+### Authentication (Placeholder)
+- Sign In modal with Login/Register tabs
+- Form validation
+- Escape key and overlay click to close
+- Demo alert on submit (not yet connected to backend)
+
+### Core Feature Placeholders
+- Smart Search (AI-powered matching)
+- Analytics (Success rate tracking)
+- Alerts (New grant notifications)
+- Documents (Application materials)
 
 ## Data Structure
 

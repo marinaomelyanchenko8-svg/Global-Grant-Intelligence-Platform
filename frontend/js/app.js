@@ -41,9 +41,22 @@ const MOCK_GRANTS = [
 
 // DOM Elements
 const grantsContainer = document.getElementById('grants-container');
+const dashboardGrantsContainer = document.getElementById('dashboard-grants');
 const loadingElement = document.getElementById('loading');
 const errorElement = document.getElementById('error');
 const retryBtn = document.getElementById('retry-btn');
+
+// Navigation & Modal Elements
+const navLinks = document.querySelectorAll('.nav-link');
+const authBtn = document.getElementById('auth-btn');
+const authModal = document.getElementById('auth-modal');
+const modalClose = document.querySelector('.modal-close');
+const modalOverlay = document.querySelector('.modal-overlay');
+const authTabs = document.querySelectorAll('.auth-tab');
+const authForms = document.querySelectorAll('.auth-form');
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+const pages = document.querySelectorAll('.page');
 
 // Utility Functions
 /**
@@ -176,12 +189,88 @@ async function fetchGrants() {
 }
 
 /**
- * Initialize the application
+ * Initialize the grants page
  */
 async function init() {
+    // Only load if on grants page or initial load
     const grants = await fetchGrants();
     if (grants) {
         renderGrants(grants);
+    }
+}
+
+// Page Navigation
+function navigateTo(pageId) {
+    // Hide all pages
+    pages.forEach(page => page.classList.remove('active'));
+
+    // Show target page
+    const targetPage = document.getElementById(`page-${pageId}`);
+    if (targetPage) {
+        targetPage.classList.add('active');
+    }
+
+    // Update nav links
+    navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.page === pageId);
+    });
+
+    // Load grants on dashboard if navigating there
+    if (pageId === 'dashboard' && dashboardGrantsContainer) {
+        loadDashboardGrants();
+    }
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+function handleNavigation(e) {
+    e.preventDefault();
+    const pageId = e.target.dataset.page;
+    if (pageId) {
+        navigateTo(pageId);
+        window.history.pushState({ page: pageId }, '', `#${pageId}`);
+    }
+}
+
+// Auth Modal
+function openAuthModal() {
+    authModal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAuthModal() {
+    authModal.classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+function switchAuthTab(tabId) {
+    authTabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.tab === tabId);
+    });
+    authForms.forEach(form => {
+        form.classList.toggle('active', form.id === `${tabId}-form`);
+    });
+}
+
+// Dashboard grants (limited set)
+async function loadDashboardGrants() {
+    if (!dashboardGrantsContainer) return;
+
+    dashboardGrantsContainer.innerHTML = '<div class="loading">Loading...</div>';
+
+    const grants = USE_MOCK
+        ? MOCK_GRANTS.slice(0, 3)
+        : await fetchGrants().then(data => data?.slice(0, 3));
+
+    if (grants && grants.length > 0) {
+        dashboardGrantsContainer.innerHTML = '';
+        grants.forEach(grant => {
+            const card = createGrantCard(grant);
+            dashboardGrantsContainer.appendChild(card);
+        });
+    } else {
+        dashboardGrantsContainer.innerHTML = '<div class="loading">No grants available</div>';
     }
 }
 
@@ -190,8 +279,68 @@ if (retryBtn) {
     retryBtn.addEventListener('click', init);
 }
 
+// Navigation
+navLinks.forEach(link => {
+    link.addEventListener('click', handleNavigation);
+});
+
+// Auth Modal
+if (authBtn) {
+    authBtn.addEventListener('click', openAuthModal);
+}
+
+if (modalClose) {
+    modalClose.addEventListener('click', closeAuthModal);
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeAuthModal);
+}
+
+// Auth Tabs
+authTabs.forEach(tab => {
+    tab.addEventListener('click', () => switchAuthTab(tab.dataset.tab));
+});
+
+// Auth Forms
+if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Demo: Sign in functionality coming soon!');
+        closeAuthModal();
+    });
+}
+
+if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Demo: Registration coming soon!');
+        closeAuthModal();
+    });
+}
+
+// Close modal on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !authModal.classList.contains('hidden')) {
+        closeAuthModal();
+    }
+});
+
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+    const pageId = window.location.hash.slice(1) || 'dashboard';
+    navigateTo(pageId);
+});
+
 // Start the app when DOM is ready
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+    // Check URL hash for initial page
+    const initialPage = window.location.hash.slice(1) || 'dashboard';
+    navigateTo(initialPage);
+
+    // Initialize grants on main grants page
+    init();
+});
 
 // Export for testing
 if (typeof module !== 'undefined' && module.exports) {
