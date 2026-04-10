@@ -6,6 +6,39 @@
 const API_BASE_URL = 'http://localhost:8000';
 const GRANTS_ENDPOINT = `${API_BASE_URL}/grants`;
 
+// Mock Data (for development when backend is not ready)
+const USE_MOCK = false;
+const MOCK_GRANTS = [
+    {
+        id: "1",
+        title: "AI for Climate Research",
+        funding_amount: 500000,
+        score: 85,
+        explanation: "High funding with broad eligibility for AI applications in climate science"
+    },
+    {
+        id: "2",
+        title: "Renewable Energy Innovation",
+        funding_amount: 250000,
+        score: 72,
+        explanation: "Strong focus on sustainable energy solutions with clear evaluation criteria"
+    },
+    {
+        id: "3",
+        title: "Community Health Outreach",
+        funding_amount: 75000,
+        score: 45,
+        explanation: "Moderate funding amount, limited to specific geographic regions"
+    },
+    {
+        id: "4",
+        title: "Educational Technology Grant",
+        funding_amount: 30000,
+        score: 25,
+        explanation: "Low funding amount with highly competitive application process"
+    }
+];
+
 // DOM Elements
 const grantsContainer = document.getElementById('grants-container');
 const loadingElement = document.getElementById('loading');
@@ -114,11 +147,17 @@ function renderGrants(grants) {
 }
 
 /**
- * Fetch grants from the API
+ * Fetch grants from the API (or use mock data if USE_MOCK is true)
  * @returns {Promise<Array>} Array of grant objects
  */
 async function fetchGrants() {
     showLoading();
+
+    // Use mock data for development when backend is not ready
+    if (USE_MOCK) {
+        console.log('Using mock data');
+        return Promise.resolve(MOCK_GRANTS);
+    }
 
     try {
         const response = await fetch(GRANTS_ENDPOINT);
