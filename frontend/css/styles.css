@@ -61,7 +61,7 @@ body {
     width: 100%;
 }
 
-/* Grants Grid */
+/* Grants Grid - Task 3: Grant List Container */
 .grants-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
