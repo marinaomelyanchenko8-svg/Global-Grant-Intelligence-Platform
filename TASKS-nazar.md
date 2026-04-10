@@ -237,9 +237,9 @@ git commit -m "Add frontend README with setup documentation"
 
 | Task | Effort | Status | Notes |
 |------|--------|--------|-------|
-| 1. Project Scaffold | Small | ⬜ | Do first |
+| 1. Project Scaffold | Small | ✅ | Do first |
 | 2. Grant Card | Small | ✅ | Core component |
-| 3. List Container | Small | ⬜ | Layout structure |
+| 3. List Container | Small | ✅ | Layout structure |
 | 4. API Client | Medium | ✅ | Needs backend CORS |
 | 5. Dynamic Rendering | Medium | ⬜ | Connect API to UI |
 | 6. Loading/Error | Small | ⬜ | UX improvement |
