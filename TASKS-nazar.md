@@ -24,14 +24,14 @@ git checkout -b nazar/frontend-mvp
 Set up the frontend directory structure and basic HTML/CSS/JS files.
 
 ### Acceptance Criteria
-- [x] Create `frontend/` directory structure:
-  - [x] `index.html` — main entry point
-  - [x] `css/styles.css` — styling
-  - [x] `js/app.js` — JavaScript logic
-- [x] Basic HTML5 boilerplate in `index.html`
-- [x] CSS file linked and loads correctly
-- [x] JavaScript file linked and executes on page load
-- [x] Page opens without errors in browser
+- [ ] Create `frontend/` directory structure:
+  - `index.html` — main entry point
+  - `css/styles.css` — styling
+  - `js/app.js` — JavaScript logic
+- [ ] Basic HTML5 boilerplate in `index.html`
+- [ ] CSS file linked and loads correctly
+- [ ] JavaScript file linked and executes on page load
+- [ ] Page opens without errors in browser
 
 ### Commit Message
 ```
@@ -88,12 +88,12 @@ git commit -m "Add grant card component with styling"
 Create a container that holds multiple grant cards in a grid or list layout.
 
 ### Acceptance Criteria
-- [x] Create container div for multiple cards in `index.html`
-- [x] Layout uses CSS Grid or Flexbox for card arrangement
-- [x] Grid shows 3 cards per row on desktop, 2 on tablet, 1 on mobile
-- [x] Cards have consistent spacing (gap of 16-24px)
-- [x] Container has max-width and is centered on page
-- [x] Page title "Global Grant Intelligence Platform" at top
+- [ ] Create container div for multiple cards in `index.html`
+- [ ] Layout uses CSS Grid or Flexbox for card arrangement
+- [ ] Grid shows 3 cards per row on desktop, 2 on tablet, 1 on mobile
+- [ ] Cards have consistent spacing (gap of 16-24px)
+- [ ] Container has max-width and is centered on page
+- [ ] Page title "Global Grant Intelligence Platform" at top
 
 ### Commit Message
 ```
@@ -148,13 +148,13 @@ git commit -m "Add API client for fetching grants"
 Connect the API client to render grants dynamically in the list container.
 
 ### Acceptance Criteria
-- [x] On page load, call `fetchGrants()`
-- [x] Create DOM elements for each grant returned
-- [x] Apply Task 2 card styling to rendered cards
-- [x] Cards display in the Task 3 container
-- [x] Page shows "Loading..." while fetching
-- [x] Page shows "No grants available" if empty array returned
-- [x] Page shows "Error loading grants" if request fails
+- [ ] On page load, call `fetchGrants()`
+- [ ] Create DOM elements for each grant returned
+- [ ] Apply Task 2 card styling to rendered cards
+- [ ] Cards display in the Task 3 container
+- [ ] Page shows "Loading..." while fetching
+- [ ] Page shows "No grants available" if empty array returned
+- [ ] Page shows "Error loading grants" if request fails
 
 ### Commit Message
 ```
@@ -172,11 +172,11 @@ git commit -m "Add dynamic grant rendering from API"
 Add visual feedback for loading and error states.
 
 ### Acceptance Criteria
-- [x] Show spinner or "Loading grants..." text while fetching
-- [x] Hide loading indicator when data loaded
-- [x] Show error message if API call fails
-- [x] Error message includes retry button (calls fetchGrants again)
-- [x] Loading/error states have consistent styling
+- [ ] Show spinner or "Loading grants..." text while fetching
+- [ ] Hide loading indicator when data loaded
+- [ ] Show error message if API call fails
+- [ ] Error message includes retry button (calls fetchGrants again)
+- [ ] Loading/error states have consistent styling
 
 ### Commit Message
 ```
@@ -194,13 +194,13 @@ git commit -m "Add loading and error state handling"
 Refine the visual design for a professional appearance.
 
 ### Acceptance Criteria
-- [x] Consistent color scheme (suggest: blue primary, gray secondary)
-- [x] Proper spacing and padding throughout
-- [x] Readable font sizes (16px base, scale up for titles)
-- [x] Hover effects on cards (slight shadow increase)
-- [x] Header with project title and brief description
-- [x] Footer with simple copyright/credits
-- [x] Works in Chrome, Firefox, Safari
+- [ ] Consistent color scheme (suggest: blue primary, gray secondary)
+- [ ] Proper spacing and padding throughout
+- [ ] Readable font sizes (16px base, scale up for titles)
+- [ ] Hover effects on cards (slight shadow increase)
+- [ ] Header with project title and brief description
+- [ ] Footer with simple copyright/credits
+- [ ] Works in Chrome, Firefox, Safari
 
 ### Commit Message
 ```
@@ -218,13 +218,13 @@ git commit -m "Polish UI styling and responsive design"
 Document the frontend setup for other team members.
 
 ### Acceptance Criteria
-- [x] Create `frontend/README.md` with sections:
-  - [x] Setup instructions (none needed for static files, or `npx serve`)
-  - [x] How to run (open `index.html` or use local server)
-  - [x] API endpoint it connects to
-  - [x] File structure overview
-- [x] Document that backend must be running on port 8000
-- [x] Include troubleshooting for CORS issues
+- [ ] Create `frontend/README.md` with sections:
+  - Setup instructions (none needed for static files, or `npx serve`)
+  - How to run (open `index.html` or use local server)
+  - API endpoint it connects to
+  - File structure overview
+- [ ] Document that backend must be running on port 8000
+- [ ] Include troubleshooting for CORS issues
 
 ### Commit Message
 ```
@@ -237,14 +237,14 @@ git commit -m "Add frontend README with setup documentation"
 
 | Task | Effort | Status | Notes |
 |------|--------|--------|-------|
-| 1. Project Scaffold | Small | ✅ | Done |
+| 1. Project Scaffold | Small | ⬜ | Do first |
 | 2. Grant Card | Small | ✅ | Core component |
-| 3. List Container | Small | ✅ | Done |
-| 4. API Client | Medium | ✅ | Done |
-| 5. Dynamic Rendering | Medium | ✅ | Done |
-| 6. Loading/Error | Small | ✅ | Done |
-| 7. UI Polish | Medium | ✅ | Done |
-| 8. Documentation | Small | ✅ | Done |
+| 3. List Container | Small | ⬜ | Layout structure |
+| 4. API Client | Medium | ✅ | Needs backend CORS |
+| 5. Dynamic Rendering | Medium | ⬜ | Connect API to UI |
+| 6. Loading/Error | Small | ⬜ | UX improvement |
+| 7. UI Polish | Medium | ⬜ | Final styling |
+| 8. Documentation | Small | ⬜ | Final step |
 
 ---
 
