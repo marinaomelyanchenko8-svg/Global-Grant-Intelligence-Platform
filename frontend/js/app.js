@@ -14,28 +14,40 @@ const MOCK_GRANTS = [
         title: "AI for Climate Research",
         funding_amount: 500000,
         score: 85,
-        explanation: "High funding with broad eligibility for AI applications in climate science"
+        explanation: "High funding with broad eligibility for AI applications in climate science",
+        topics: ["AI", "Climate", "Research"],
+        trend_label: "rising",
+        confidence: 92
     },
     {
         id: "2",
         title: "Renewable Energy Innovation",
         funding_amount: 250000,
         score: 72,
-        explanation: "Strong focus on sustainable energy solutions with clear evaluation criteria"
+        explanation: "Strong focus on sustainable energy solutions with clear evaluation criteria",
+        topics: ["Energy", "Sustainability", "Innovation"],
+        trend_label: "stable",
+        confidence: 78
     },
     {
         id: "3",
         title: "Community Health Outreach",
         funding_amount: 75000,
         score: 45,
-        explanation: "Moderate funding amount, limited to specific geographic regions"
+        explanation: "Moderate funding amount, limited to specific geographic regions",
+        topics: ["Health", "Community"],
+        trend_label: "declining",
+        confidence: 65
     },
     {
         id: "4",
         title: "Educational Technology Grant",
         funding_amount: 30000,
         score: 25,
-        explanation: "Low funding amount with highly competitive application process"
+        explanation: "Low funding amount with highly competitive application process",
+        topics: ["Education", "Technology"],
+        trend_label: "stable",
+        confidence: 45
     }
 ];
 
@@ -125,6 +137,9 @@ function createGrantCard(grant) {
         <div class="grant-funding">${formatFunding(grant.funding_amount)}</div>
         <div class="grant-score ${getScoreClass(grant.score)}">Score: ${grant.score}</div>
         <p class="grant-explanation">${escapeHtml(grant.explanation)}</p>
+        ${grant.topics ? `<div class="grant-topics">Topics: ${escapeHtml(grant.topics.join(', '))}</div>` : ''}
+        ${grant.trend_label ? `<div class="grant-trend">Trend: ${escapeHtml(grant.trend_label)}</div>` : ''}
+        ${grant.confidence ? `<div class="grant-confidence">Confidence: ${grant.confidence}%</div>` : ''}
     `;
     return card;
 }

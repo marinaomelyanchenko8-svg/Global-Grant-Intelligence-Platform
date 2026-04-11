@@ -376,6 +376,29 @@ body {
     line-height: 1.5;
 }
 
+.grant-topics,
+.grant-trend,
+.grant-confidence {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
+}
+
+.grant-topics {
+    color: var(--primary-color);
+}
+
+.grant-trend {
+    font-weight: 500;
+}
+
+.grant-confidence {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
 /* Footer */
 .footer {
     background-color: var(--card-background);
