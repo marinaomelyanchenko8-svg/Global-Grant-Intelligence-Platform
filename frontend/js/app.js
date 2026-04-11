@@ -7,7 +7,7 @@ const API_BASE_URL = 'http://localhost:8000';
 const GRANTS_ENDPOINT = `${API_BASE_URL}/grants`;
 
 // Mock Data (for development when backend is not ready)
-const USE_MOCK = false;
+const USE_MOCK = true;
 const MOCK_GRANTS = [
     {
         id: "1",
@@ -132,14 +132,19 @@ function formatFunding(amount) {
 function createGrantCard(grant) {
     const card = document.createElement('div');
     card.className = 'grant-card';
+
+    const topics = grant.topics && grant.topics.length > 0 ? escapeHtml(grant.topics.join(', ')) : 'N/A';
+    const trend = grant.trend_label ? escapeHtml(grant.trend_label) : 'N/A';
+    const confidence = grant.confidence !== undefined && grant.confidence !== null ? `${grant.confidence}%` : 'N/A';
+
     card.innerHTML = `
         <h3 class="grant-title">${escapeHtml(grant.title)}</h3>
         <div class="grant-funding">${formatFunding(grant.funding_amount)}</div>
         <div class="grant-score ${getScoreClass(grant.score)}">Score: ${grant.score}</div>
         <p class="grant-explanation">${escapeHtml(grant.explanation)}</p>
-        ${grant.topics ? `<div class="grant-topics">Topics: ${escapeHtml(grant.topics.join(', '))}</div>` : ''}
-        ${grant.trend_label ? `<div class="grant-trend">Trend: ${escapeHtml(grant.trend_label)}</div>` : ''}
-        ${grant.confidence ? `<div class="grant-confidence">Confidence: ${grant.confidence}%</div>` : ''}
+        <div class="grant-topics">Topics: ${topics}</div>
+        <div class="grant-trend">Trend: ${trend}</div>
+        <div class="grant-confidence">Confidence: ${confidence}</div>
     `;
     return card;
 }
