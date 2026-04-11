@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Grant Intelligence Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <h1>Global Grant Intelligence Platform</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="#dashboard" class="nav-link active" data-page="dashboard">Dashboard</a>
+                <a href="#grants" class="nav-link" data-page="grants">Grants</a>
+                <a href="#saved" class="nav-link" data-page="saved">Saved</a>
+                <button id="auth-btn" class="auth-btn">Sign In</button>
+            </nav>
+        </div>
+        <p class="header-description">Discover and track funding opportunities worldwide</p>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard Page -->
+        <section id="page-dashboard" class="page active">
+            <div class="page-header">
+                <h2>Dashboard</h2>
+                <p>Overview of your grant opportunities</p>
+            </div>
+
+            <!-- Core Features Placeholders -->
+            <div class="features-grid">
+                <div class="feature-card placeholder">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Smart Search</h3>
+                    <p>AI-powered grant matching (Coming Soon)</p>
+                </div>
+                <div class="feature-card placeholder">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>Track application success rates (Coming Soon)</p>
+                </div>
+                <div class="feature-card placeholder">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Alerts</h3>
+                    <p>New grant notifications (Coming Soon)</p>
+                </div>
+                <div class="feature-card placeholder">
+                    <div class="feature-icon">📁</div>
+                    <h3>Documents</h3>
+                    <p>Manage application materials (Coming Soon)</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h3>Recommended Grants</h3>
+                <a href="#grants" class="view-all" data-page="grants">View All →</a>
+            </div>
+            <div id="dashboard-grants" class="grants-grid"></div>
+        </section>
+
+        <!-- Grants Page -->
+        <section id="page-grants" class="page">
+            <div class="page-header">
+                <h2>Available Grants</h2>
+                <p>Browse all funding opportunities</p>
+            </div>
+            <div id="loading" class="loading hidden">Loading grants...</div>
+            <div id="error" class="error hidden">
+                <p>Error loading grants</p>
+                <button id="retry-btn" class="retry-btn">Retry</button>
+            </div>
+            <div id="grants-container" class="grants-grid"></div>
+        </section>
+
+        <!-- Saved Page -->
+        <section id="page-saved" class="page">
+            <div class="page-header">
+                <h2>Saved Grants</h2>
+                <p>Your bookmarked opportunities</p>
+            </div>
+            <div class="empty-state">
+                <div class="empty-icon">🔖</div>
+                <p>No saved grants yet</p>
+                <a href="#grants" class="btn-primary" data-page="grants">Browse Grants</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Sign In</button>
+                <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+            <div class="auth-forms">
+                <form id="login-form" class="auth-form active">
+                    <h3>Welcome Back</h3>
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Sign In</button>
+                    <p class="form-note">Demo: Authentication coming soon</p>
+                </form>
+                <form id="register-form" class="auth-form">
+                    <h3>Create Account</h3>
+                    <div class="form-group">
+                        <label for="register-name">Full Name</label>
+                        <input type="text" id="register-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Create Account</button>
+                    <p class="form-note">Demo: Registration coming soon</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Global Grant Intelligence Platform</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
