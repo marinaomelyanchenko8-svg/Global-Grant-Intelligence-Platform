@@ -120,14 +120,14 @@ These tasks run parallel to Arvin's and Nazar's development.
 Set up the intelligence directory and module structure.
 
 ### Acceptance Criteria
-- [ ] Create `intelligence/` subdirectory structure:
+- [x] Create `intelligence/` subdirectory structure:
   - `analyzer.py` — main analysis functions
   - `topics.py` — topic detection logic
   - `trends.py` — trend classification
   - `scoring.py` — score calculation
   - `explanation.py` — explanation generation
-- [ ] Create `__init__.py` to make it a Python package
-- [ ] Create `requirements.txt` with dependencies (if any beyond standard library)
+- [x] Create `__init__.py` to make it a Python package
+- [x] Create `requirements.txt` with dependencies (if any beyond standard library)
 
 ### Commit Message
 ```
@@ -145,7 +145,7 @@ git commit -m "Add intelligence module scaffold"
 Implement keyword-based topic detection for grants.
 
 ### Acceptance Criteria
-- [ ] Define topic keywords mapping:
+- [x] Define topic keywords mapping:
   - AI: ["artificial intelligence", "machine learning", "ml", "ai", "neural", "deep learning"]
   - Climate: ["climate", "environment", "carbon", "renewable", "sustainability"]
   - Healthcare: ["health", "medical", "healthcare", "disease", "treatment"]
@@ -154,10 +154,10 @@ Implement keyword-based topic detection for grants.
   - Agriculture: ["agriculture", "farming", "crop", "food security", "rural"]
   - Energy: ["energy", "power", "solar", "wind", "grid", "electricity"]
   - Social Impact: ["social impact", "community", "nonprofit", "ngo", "equity"]
-- [ ] Create `detect_topics(text)` function
-- [ ] Function returns list of detected topics
-- [ ] Calculate confidence as (matched keywords / total keywords)
-- [ ] Handle case with no matches (empty list, confidence 0)
+- [x] Create `detect_topics(text)` function
+- [x] Function returns list of detected topics
+- [x] Calculate confidence as (matched keywords / total keywords)
+- [x] Handle case with no matches (empty list, confidence 0)
 
 ### Usage Example
 ```python
@@ -183,14 +183,14 @@ git commit -m "Add topic detection with keyword matching"
 Implement logic to classify grant trends based on available data.
 
 ### Acceptance Criteria
-- [ ] Create `classify_trend(grant)` function
-- [ ] Returns one of: "Emerging", "Growing", "Stable", "Declining"
-- [ ] Rules (MVP simplification):
+- [x] Create `classify_trend(grant)` function
+- [x] Returns one of: "Emerging", "Growing", "Stable", "Declining"
+- [x] Rules (MVP simplification):
   - Emerging: deadline > 6 months away AND description contains "new", "first", "pilot"
   - Growing: funding_amount > 100000 OR description contains "expanded", "increased"
   - Declining: deadline < 1 month OR description contains "final", "closing", "last"
   - Stable: default if none of above
-- [ ] Document that this is rule-based MVP logic (can be improved later)
+- [x] Document that this is rule-based MVP logic (can be improved later)
 
 ### Commit Message
 ```
@@ -208,9 +208,9 @@ git commit -m "Add trend classification logic"
 Implement 0-100 opportunity scoring based on configurable rules.
 
 ### Acceptance Criteria
-- [ ] Create `calculate_score(grant)` function
-- [ ] Start with base score of 50
-- [ ] Add/subtract points based on rules:
+- [x] Create `calculate_score(grant)` function
+- [x] Start with base score of 50
+- [x] Add/subtract points based on rules:
   - +20 if funding_amount > 100000
   - +10 if funding_amount > 50000
   - -10 if funding_amount < 10000
@@ -219,8 +219,8 @@ Implement 0-100 opportunity scoring based on configurable rules.
   - -15 if deadline < 1 month
   - +10 if eligibility contains "global", "any", "all", "international"
   - +5 if description contains "innovation", "growth", "impact"
-- [ ] Clamp final score to 0-100 range
-- [ ] Return integer score
+- [x] Clamp final score to 0-100 range
+- [x] Return integer score
 
 ### Commit Message
 ```
@@ -238,16 +238,16 @@ git commit -m "Add opportunity scoring engine with rule-based algorithm"
 Generate human-readable explanations for scores.
 
 ### Acceptance Criteria
-- [ ] Create `generate_explanation(grant, score_factors)` function
-- [ ] Identify top 2 scoring factors
-- [ ] Generate template-based explanation:
+- [x] Create `generate_explanation(grant, score_factors)` function
+- [x] Identify top 2 scoring factors
+- [x] Generate template-based explanation:
   - High funding: "High funding amount"
   - Broad eligibility: "with broad eligibility"
   - Time sensitive: "Time-sensitive opportunity"
   - Innovation focus: "Strong alignment with innovation priorities"
-- [ ] Combine factors into one sentence (max 100 characters)
-- [ ] Example: "High funding amount with broad eligibility"
-- [ ] Example: "Time-sensitive opportunity with innovation focus"
+- [x] Combine factors into one sentence (max 100 characters)
+- [x] Example: "High funding amount with broad eligibility"
+- [x] Example: "Time-sensitive opportunity with innovation focus"
 
 ### Commit Message
 ```
@@ -265,17 +265,17 @@ git commit -m "Add explanation generator"
 Create the main entry point that processes a grant and returns enriched data.
 
 ### Acceptance Criteria
-- [ ] Create `analyze_grant(grant)` function in `analyzer.py`
-- [ ] Accepts dictionary with raw grant fields
-- [ ] Calls topic detection, trend classification, scoring, explanation
-- [ ] Returns dictionary with all intelligence fields added:
+- [x] Create `analyze_grant(grant)` function in `analyzer.py`
+- [x] Accepts dictionary with raw grant fields
+- [x] Calls topic detection, trend classification, scoring, explanation
+- [x] Returns dictionary with all intelligence fields added:
   - topics (list)
   - confidence (float)
   - trend_label (str)
   - score (int)
   - explanation (str)
-- [ ] Original grant data is preserved
-- [ ] Function has docstring with example usage
+- [x] Original grant data is preserved
+- [x] Function has docstring with example usage
 
 ### Usage Example
 ```python
@@ -308,12 +308,12 @@ git commit -m "Add main grant analyzer function integrating all components"
 Create test cases to verify intelligence logic works correctly.
 
 ### Acceptance Criteria
-- [ ] Create `test_analyzer.py` with 5-10 test cases
-- [ ] Test different grant types (high funding, time-sensitive, broad eligibility)
-- [ ] Verify score ranges are 0-100
-- [ ] Verify topics are from approved list
-- [ ] Verify trend labels are valid values
-- [ ] Run tests and fix any issues
+- [x] Create `test_analyzer.py` with 5-10 test cases
+- [x] Test different grant types (high funding, time-sensitive, broad eligibility)
+- [x] Verify score ranges are 0-100
+- [x] Verify topics are from approved list
+- [x] Verify trend labels are valid values
+- [x] Run tests and fix any issues
 
 ### Commit Message
 ```
@@ -613,19 +613,19 @@ git commit -m "Add MVP retrospective documentation"
 ### Phase 2: Intelligence (Days 2-4)
 | Task | Effort | Status |
 |------|--------|--------|
-| 2.1 Intelligence Scaffold | Small | ⬜ |
-| 2.2 Topic Detection | Medium | ⬜ |
-| 2.3 Trend Classification | Small | ⬜ |
-| 2.4 Scoring Engine | Medium | ⬜ |
-| 2.5 Explanation Generator | Small | ⬜ |
-| 2.6 Main Analyzer | Medium | ⬜ |
-| 2.7 Testing | Small | ⬜ |
+| 2.1 Intelligence Scaffold | Small | ✅ |
+| 2.2 Topic Detection | Medium | ✅ |
+| 2.3 Trend Classification | Small | ✅ |
+| 2.4 Scoring Engine | Medium | ✅ |
+| 2.5 Explanation Generator | Small | ✅ |
+| 2.6 Main Analyzer | Medium | ✅ |
+| 2.7 Testing | Small | ✅ |
 
 ### Phase 3: Integration (Day 5)
 | Task | Effort | Status |
 |------|--------|--------|
-| 3.1 Code Review | Medium | ⬜ |
-| 3.2 Integration Testing | Medium | ⬜ |
+| 3.1 Code Review | Medium | ✅ |
+| 3.2 Integration Testing | Medium | ✅ |
 
 ### Phase 4: Documentation (Day 6)
 | Task | Effort | Status |
