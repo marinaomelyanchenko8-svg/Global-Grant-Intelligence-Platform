@@ -7,7 +7,7 @@ const API_BASE_URL = 'http://localhost:8000';
 const GRANTS_ENDPOINT = `${API_BASE_URL}/grants`;
 
 // Mock Data (for development when backend is not ready)
-const USE_MOCK = true;
+const USE_MOCK = false;
 const MOCK_GRANTS = [
     {
         id: "1",
