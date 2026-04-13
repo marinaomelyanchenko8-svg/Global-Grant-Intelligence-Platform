@@ -5,6 +5,14 @@ import json
 import os
 from app.models import Grant
 
+# Import intelligence module with fallback
+try:
+    from intelligence.analyzer import analyze_grant
+    INTELLIGENCE_AVAILABLE = True
+except ImportError:
+    INTELLIGENCE_AVAILABLE = False
+    analyze_grant = None
+
 app = FastAPI(
     title="Global Grant Intelligence Platform API",
     description="Backend API for grant aggregation and intelligence",
@@ -29,11 +37,26 @@ async def health_check():
 
 
 def load_grants() -> List[Grant]:
-    """Load grants from JSON file."""
+    """Load grants from JSON file and enrich with intelligence if available."""
     data_path = os.path.join(os.path.dirname(__file__), "data", "grants.json")
     with open(data_path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    return [Grant(**grant) for grant in data]
+    
+    grants = []
+    for grant_data in data:
+        if INTELLIGENCE_AVAILABLE and analyze_grant:
+            try:
+                # Enrich grant with intelligence fields
+                enriched = analyze_grant(dict(grant_data))
+                grants.append(Grant(**enriched))
+            except Exception:
+                # Fallback to mock data if analysis fails
+                grants.append(Grant(**grant_data))
+        else:
+            # Use mock data as-is when intelligence module unavailable
+            grants.append(Grant(**grant_data))
+    
+    return grants
 
 
 @app.get("/grants", response_model=List[Grant])

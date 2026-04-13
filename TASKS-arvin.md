@@ -221,10 +221,10 @@ git commit -m "Add backend README with setup and API documentation"
 Integrate Marina's intelligence module to enrich grants dynamically.
 
 ### Acceptance Criteria
-- [ ] Import intelligence module from `intelligence/` directory
-- [ ] Call `analyze_grant()` for each grant before returning
-- [ ] Handle case where intelligence module not available (use mock data)
-- [ ] Ensure no errors if intelligence module raises exceptions
+- [x] Import intelligence module from `intelligence/` directory
+- [x] Call `analyze_grant()` for each grant before returning
+- [x] Handle case where intelligence module not available (use mock data)
+- [x] Ensure no errors if intelligence module raises exceptions
 
 ### Note
 This task can be skipped if time is short—mock data already includes intelligence fields.
@@ -246,7 +246,7 @@ git commit -m "Integrate intelligence module for dynamic grant enrichment"
 | 4. GET /grants | Small | ✅ | Core endpoint |
 | 5. CORS Config | Small | ✅ | For frontend |
 | 6. Documentation | Small | ✅ | Final polish |
-| 7. Integration | Medium | ⬜ | If time allows |
+| 7. Integration | Medium | ✅ | If time allows |
 
 ---
 
