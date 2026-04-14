@@ -13,16 +13,36 @@ The Global Grant Intelligence Platform is a web application that discovers, anal
 
 ## 2. System Architecture Diagram
 
+### Phase 2: With Grants.gov Integration
+
 ```
 Frontend (Browser)
     ↓ HTTP Request
 Backend API (/grants)
-    ↓ Load Data
+    ↓ Try Fetch
+Grants.gov RSS Feed
+    ↓ Parse & Normalize
+Cache Layer (1-hour TTL)
+    ↓ Load (if fresh) or Fetch (if stale)
+Deduplicator (title + deadline)
+    ↓ Process
 Intelligence Layer (analyzer)
     ↓ Enrich
 Response (enriched grant data)
     ↓ JSON
-Frontend UI (cards)
+Frontend UI (cards with source links)
+```
+
+### Fallback Flow (when Grants.gov unavailable)
+
+```
+Backend API (/grants)
+    ↓ Fetch Fails
+Mock Data (grants.json)
+    ↓ Load
+Intelligence Layer (analyzer)
+    ↓ Enrich
+Response (enriched grant data)
 ```
 
 ---

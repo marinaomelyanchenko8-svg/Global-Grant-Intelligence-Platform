@@ -1,7 +1,31 @@
 """Opportunity scoring engine with rule-based algorithm."""
 
+import json
+import os
 from datetime import datetime
 from typing import Dict, Any, List, Tuple
+
+
+def _load_scoring_config() -> Dict[str, Any]:
+    """Load scoring configuration from JSON file."""
+    config_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        "backend", "data", "scoring_config.json"
+    )
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, IOError, FileNotFoundError):
+        # Fallback to default config if file missing
+        return {
+            "base_score": 50,
+            "funding_rules": [{"condition": "funding > 100000", "points": 20}],
+            "deadline_rules": [{"condition": "months > 6", "points": 15}],
+            "eligibility_rules": [{"keywords": ["global"], "points": 10}],
+            "description_rules": [{"keywords": ["innovation"], "points": 5}],
+            "min_score": 0,
+            "max_score": 100
+        }
 
 
 def calculate_score(grant: Dict[str, Any]) -> int:
@@ -34,42 +58,55 @@ def calculate_score(grant: Dict[str, Any]) -> int:
         ... })
         90
     """
-    score = 50  # Base score
-
-    # Funding size factors
+    config = _load_scoring_config()
+    score = config.get("base_score", 50)
     funding = grant.get("funding_amount", 0)
-    if funding > 100000:
-        score += 20
-    elif funding > 50000:
-        score += 10
-    elif funding < 10000:
-        score -= 10
+    
+    # Funding size factors
+    for rule in config.get("funding_rules", []):
+        condition = rule.get("condition", "")
+        points = rule.get("points", 0)
+        if condition == "funding > 100000" and funding > 100000:
+            score += points
+        elif condition == "funding > 50000" and funding > 50000:
+            score += points
+        elif condition == "funding < 10000" and funding < 10000:
+            score += points
 
     # Deadline proximity factors
     deadline_str = grant.get("deadline", "")
     months_until = _months_until_deadline(deadline_str)
     if months_until is not None:
-        if months_until > 6:
-            score += 15
-        elif months_until >= 3:
-            score += 5
-        elif months_until < 1:
-            score -= 15
+        for rule in config.get("deadline_rules", []):
+            condition = rule.get("condition", "")
+            points = rule.get("points", 0)
+            if condition == "months > 6" and months_until > 6:
+                score += points
+            elif condition == "months >= 3" and months_until >= 3:
+                score += points
+            elif condition == "months < 1" and months_until < 1:
+                score += points
 
     # Eligibility breadth
     eligibility = grant.get("eligibility", "").lower()
-    broad_terms = ["global", "any", "all", "international"]
-    if any(term in eligibility for term in broad_terms):
-        score += 10
+    for rule in config.get("eligibility_rules", []):
+        keywords = rule.get("keywords", [])
+        points = rule.get("points", 0)
+        if any(term in eligibility for term in keywords):
+            score += points
 
     # Description quality
     description = grant.get("description", "").lower()
-    quality_keywords = ["innovation", "growth", "impact"]
-    if any(kw in description for kw in quality_keywords):
-        score += 5
+    for rule in config.get("description_rules", []):
+        keywords = rule.get("keywords", [])
+        points = rule.get("points", 0)
+        if any(kw in description for kw in keywords):
+            score += points
 
-    # Clamp to 0-100 range
-    return max(0, min(100, score))
+    # Clamp to configured range
+    min_score = config.get("min_score", 0)
+    max_score = config.get("max_score", 100)
+    return max(min_score, min(max_score, score))
 
 
 def get_score_factors(grant: Dict[str, Any]) -> List[Tuple[str, int]]:
@@ -78,33 +115,54 @@ def get_score_factors(grant: Dict[str, Any]) -> List[Tuple[str, int]]:
 
     Returns list of (factor_name, points) tuples sorted by points.
     """
+    config = _load_scoring_config()
     factors = []
-
     funding = grant.get("funding_amount", 0)
-    if funding > 100000:
-        factors.append(("high_funding", 20))
-    elif funding > 50000:
-        factors.append(("medium_funding", 10))
-    elif funding < 10000:
-        factors.append(("low_funding", -10))
 
+    # Funding size factors
+    for rule in config.get("funding_rules", []):
+        condition = rule.get("condition", "")
+        points = rule.get("points", 0)
+        desc = rule.get("description", "funding")
+        if condition == "funding > 100000" and funding > 100000:
+            factors.append((desc, points))
+        elif condition == "funding > 50000" and funding > 50000:
+            factors.append((desc, points))
+        elif condition == "funding < 10000" and funding < 10000:
+            factors.append((desc, points))
+
+    # Deadline proximity factors
     deadline_str = grant.get("deadline", "")
     months_until = _months_until_deadline(deadline_str)
     if months_until is not None:
-        if months_until > 6:
-            factors.append(("distant_deadline", 15))
-        elif months_until >= 3:
-            factors.append(("moderate_deadline", 5))
-        elif months_until < 1:
-            factors.append(("urgent_deadline", -15))
+        for rule in config.get("deadline_rules", []):
+            condition = rule.get("condition", "")
+            points = rule.get("points", 0)
+            desc = rule.get("description", "deadline")
+            if condition == "months > 6" and months_until > 6:
+                factors.append((desc, points))
+            elif condition == "months >= 3" and months_until >= 3:
+                factors.append((desc, points))
+            elif condition == "months < 1" and months_until < 1:
+                factors.append((desc, points))
 
+    # Eligibility breadth
     eligibility = grant.get("eligibility", "").lower()
-    if any(term in eligibility for term in ["global", "any", "all", "international"]):
-        factors.append(("broad_eligibility", 10))
+    for rule in config.get("eligibility_rules", []):
+        keywords = rule.get("keywords", [])
+        points = rule.get("points", 0)
+        desc = rule.get("description", "eligibility")
+        if any(term in eligibility for term in keywords):
+            factors.append((desc, points))
 
+    # Description quality
     description = grant.get("description", "").lower()
-    if any(kw in description for kw in ["innovation", "growth", "impact"]):
-        factors.append(("quality_keywords", 5))
+    for rule in config.get("description_rules", []):
+        keywords = rule.get("keywords", [])
+        points = rule.get("points", 0)
+        desc = rule.get("description", "description")
+        if any(kw in description for kw in keywords):
+            factors.append((desc, points))
 
     return sorted(factors, key=lambda x: abs(x[1]), reverse=True)
 

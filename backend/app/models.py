@@ -30,6 +30,11 @@ class Grant(BaseModel):
     score: int = Field(default=50, ge=0, le=100, description="0-100 opportunity score")
     explanation: str = Field(default="", description="Human-readable score rationale")
     
+    # Metadata Fields
+    data_source: Literal["grants.gov", "mock"] = Field(
+        default="mock", description="Source of grant data: grants.gov (live) or mock (fallback)"
+    )
+    
     @validator("score")
     def validate_score(cls, v):
         if v < 0:

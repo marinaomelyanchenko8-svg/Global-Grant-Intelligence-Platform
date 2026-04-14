@@ -1,0 +1,53 @@
+{
+  "base_score": 50,
+  "funding_rules": [
+    {
+      "condition": "funding > 100000",
+      "points": 20,
+      "description": "High funding amount"
+    },
+    {
+      "condition": "funding > 50000",
+      "points": 10,
+      "description": "Medium funding amount"
+    },
+    {
+      "condition": "funding < 10000",
+      "points": -10,
+      "description": "Low funding amount"
+    }
+  ],
+  "deadline_rules": [
+    {
+      "condition": "months > 6",
+      "points": 15,
+      "description": "Distant deadline"
+    },
+    {
+      "condition": "months >= 3",
+      "points": 5,
+      "description": "Moderate deadline"
+    },
+    {
+      "condition": "months < 1",
+      "points": -15,
+      "description": "Urgent deadline"
+    }
+  ],
+  "eligibility_rules": [
+    {
+      "keywords": ["global", "any", "all", "international"],
+      "points": 10,
+      "description": "Broad eligibility"
+    }
+  ],
+  "description_rules": [
+    {
+      "keywords": ["innovation", "growth", "impact"],
+      "points": 5,
+      "description": "Quality keywords"
+    }
+  ],
+  "min_score": 0,
+  "max_score": 100
+}

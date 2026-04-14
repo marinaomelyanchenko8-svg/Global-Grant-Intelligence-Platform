@@ -136,6 +136,12 @@ function createGrantCard(grant) {
     const topics = grant.topics && grant.topics.length > 0 ? escapeHtml(grant.topics.join(', ')) : 'N/A';
     const trend = grant.trend_label ? escapeHtml(grant.trend_label) : 'N/A';
     const confidence = grant.confidence !== undefined && grant.confidence !== null ? `${grant.confidence}%` : 'N/A';
+    const sourceName = grant.source_name ? escapeHtml(grant.source_name) : 'Unknown';
+    const sourceUrl = grant.source_url ? escapeHtml(grant.source_url) : null;
+
+    const sourceLink = sourceUrl
+        ? `<a href="${sourceUrl}" target="_blank" rel="noopener" class="grant-source-link">View on ${sourceName} →</a>`
+        : `<span class="grant-source">Source: ${sourceName}</span>`;
 
     card.innerHTML = `
         <h3 class="grant-title">${escapeHtml(grant.title)}</h3>
@@ -145,6 +151,7 @@ function createGrantCard(grant) {
         <div class="grant-topics">Topics: ${topics}</div>
         <div class="grant-trend">Trend: ${trend}</div>
         <div class="grant-confidence">Confidence: ${confidence}</div>
+        <div class="grant-source-line">${sourceLink}</div>
     `;
     return card;
 }
@@ -168,10 +175,21 @@ function renderGrants(grants) {
     hideLoading();
     grantsContainer.innerHTML = '';
 
-    if (!grants || grants.length === 0) {
+    // Only show empty state if array is exactly empty (length === 0)
+    // null/undefined should be handled by caller
+    if (!Array.isArray(grants)) {
+        console.error('renderGrants expected array, got:', grants);
+        showError();
+        return;
+    }
+
+    if (grants.length === 0) {
+        console.log('renderGrants: empty array received, showing empty state');
         showEmpty();
         return;
     }
+
+    console.log('renderGrants: rendering', grants.length, 'grants');
 
     grants.forEach(grant => {
         const card = createGrantCard(grant);
@@ -200,6 +218,8 @@ async function fetchGrants() {
         }
 
         const data = await response.json();
+        console.log('Fetched grants data:', data);
+        console.log('Grants count:', data ? data.length : 0);
         return data;
     } catch (error) {
         console.error('Error fetching grants:', error);
@@ -214,8 +234,15 @@ async function fetchGrants() {
 async function init() {
     // Only load if on grants page or initial load
     const grants = await fetchGrants();
-    if (grants) {
+    console.log('init() received grants:', grants);
+    if (grants && Array.isArray(grants)) {
         renderGrants(grants);
+    } else if (grants === null) {
+        // Error already shown by fetchGrants, just log
+        console.log('init() received null, error state shown');
+    } else {
+        console.error('init() received unexpected data:', grants);
+        showError();
     }
 }
 

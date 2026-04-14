@@ -577,3 +577,28 @@ body {
         gap: 8px;
     }
 }
+
+/* Source Attribution */
+.grant-source-line {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.875rem;
+}
+
+.grant-source-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.grant-source-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+.grant-source {
+    color: var(--text-muted);
+    font-style: italic;
+}
