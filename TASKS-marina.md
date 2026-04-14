@@ -111,6 +111,10 @@ git push origin main
 
 These tasks run parallel to Arvin's and Nazar's development.
 
+### Phase 2 Coordination Notes
+
+**Known Issue Identified**: The `Grant` model's `data_source` field currently only accepts `"grants.gov"` and `"mock"`. Arvin's Phase 2 tasks add `eu.funding` and `open.philanthropy` sources. The fix is included in Arvin's Task 1 (modular architecture) — he will expand the Literal type to include all source values. No action needed from Marina unless integration testing reveals validation errors.
+
 ### Task 2.1: Intelligence Module Scaffold
 
 **Estimated Effort:** Small  
@@ -335,6 +339,7 @@ Review team members' code for compliance with project standards.
 ### Acceptance Criteria
 - [ ] Review Arvin's backend code
   - Data models match shared structure
+  - **Verify**: `data_source` field in `models.py` includes all 4 values (`grants.gov`, `eu.funding`, `open.philanthropy`, `mock`)
   - API returns correct format
   - Mock data has all required fields
 - [ ] Review Nazar's frontend code

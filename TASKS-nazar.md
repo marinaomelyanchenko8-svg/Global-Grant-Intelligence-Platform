@@ -119,6 +119,12 @@ Implement JavaScript to fetch grants from the backend API.
 - [ ] Function handles errors gracefully (console.error + user message)
 - [ ] CORS is handled correctly (backend must enable CORS first)
 
+**Note on `data_source` field**: Each grant has a `data_source` field indicating origin. Expected values:
+- `"grants.gov"` — live US government data
+- `"eu.funding"` — EU Funding & Tenders (added in Phase 2)
+- `"open.philanthropy"` — Open Philanthropy grants (added in Phase 2)
+- `"mock"` — fallback test data
+
 ### Test Code
 ```javascript
 fetchGrants().then(grants => console.log(grants));
